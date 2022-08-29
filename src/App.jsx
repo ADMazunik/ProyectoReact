@@ -1,12 +1,13 @@
 import './App.css';
 import NavBar from "./Components/NavBar/NavBar";
+import ItemListContainer from "./Components/ItemListContainer/ItemListContainer";
 
 function App() {
   const carrito = []
   return (
     <div className="">
       <NavBar carro={carrito} />
-      <h1 className='fs-1 text-center text-light pt-5'>Vapor Gaming - Sitio en construccion.</h1>
+      <ItemListContainer greeting='Vapor Gaming - Sitio en construccion.' />
     </div>
   );
 }
