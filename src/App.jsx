@@ -1,6 +1,9 @@
 import './App.css';
-import NavBar from "./Components/NavBar/NavBar";
-import ItemListContainer from "./Components/ItemListContainer/ItemListContainer";
+import NavBar from "./components/NavBar/NavBar";
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import { useState } from "react"
+
+
 
 function App() {
   const carrito = []
