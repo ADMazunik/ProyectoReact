@@ -1,0 +1,17 @@
+.carrito {
+  width: 35px;
+  height: 35px;
+}
+
+.numeroCarro {
+  margin-left: -10px;
+  margin-top: -5px;
+  width: 20px;
+  height: 20px;
+  padding: 1px 7px;
+  background-color: green;
+  color: white;
+  font-size: small;
+  font-weight: bold;
+  border-radius: 50%;
+}
