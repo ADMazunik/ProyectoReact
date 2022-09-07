@@ -1,0 +1,11 @@
+.card {
+  width: 20rem;
+  background-color: #0a141d;
+  color: #ffffff;
+}
+
+.btn-primary {
+  background-color: rgb(109, 181, 236);
+  color: white;
+  font-weight: bold;
+}
