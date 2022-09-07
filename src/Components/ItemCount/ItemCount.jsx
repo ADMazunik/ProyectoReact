@@ -8,24 +8,18 @@ const ItemCount = ({ stock, initial, onAdd, item, }) => {
     const [itemAdd, setItemAdd] = useState(onAdd)
 
     const subtractItem = (valor) => {
-        if (valor > 0) {
-            setCantidad(valor);
-        }
+        setCantidad(valor);
     }
     const addItem = (valor) => {
-        if (valor <= itemStock) {
-            setCantidad(valor);
-        }
+        setCantidad(valor);
     }
+
     const addtoCart = () => {
-        if (cantidad <= itemStock) {
-            setItemStock(itemStock - cantidad)
-            setItemAdd(itemAdd + cantidad)
-            setCantidad(initial)
-        }
-
-
+        setItemStock(itemStock - cantidad)
+        setItemAdd(itemAdd + cantidad)
+        setCantidad(initial)
     }
+
     const Message = (props) => {
         const message = (i) => {
             if (i > 0) {
@@ -43,11 +37,26 @@ const ItemCount = ({ stock, initial, onAdd, item, }) => {
             <h2 className="text-white text-center">{item}</h2>
             <h5 className="text-white text-center">Disponible: {itemStock}</h5>
             <div className='text-center align-self-center mt-5 d-flex flex-row gap-2'>
-                <button type="button" className="btn btn-sm btn-success buttons fs-5" onClick={() => { subtractItem(cantidad - 1) }}>-</button>
+                <button type="button" className="btn btn-sm btn-success buttons fs-5" onClick={() => {
+                    if (cantidad > 1) {
+                        subtractItem(cantidad - 1)
+                    }
+                }}>-</button>
                 <input type="text" className="form-control text-center buttons" value={cantidad} />
-                <button type="button" className="btn btn-sm btn-success buttons fs-5" onClick={() => { addItem(cantidad + 1) }}>+</button>
+                <button type="button" className="btn btn-sm btn-success buttons fs-5" onClick={() => {
+                    if (cantidad < itemStock) {
+                        addItem(cantidad + 1)
+                    }
+
+                }}>+</button>
             </div>
-            <button type="button" className="btn btn-outline-warning" onClick={addtoCart}>Agregar al Carrito</button>
+            <button type="button" className="btn btn-outline-warning" onClick={() => {
+                if (cantidad <= itemStock) {
+                    addtoCart()
+                }
+
+            }
+            }>Agregar al Carrito</button>
             <Message added={itemAdd} />
         </div>
     )
