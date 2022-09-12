@@ -1,12 +1,11 @@
 import React from 'react'
 import './CartWidget.css'
-import Carrito from "../../assets/images/carrito.png"
 
 const CartWidget = (props) => {
   const { carrito } = props
   return (
     <div className='d-flex flex-row'>
-      <img className='carrito' src={Carrito} alt="" />
+      <img className='carrito' src="images/carrito.png" alt="" />
       <p className='numeroCarro'>{carrito.length}</p>
     </div>
   )

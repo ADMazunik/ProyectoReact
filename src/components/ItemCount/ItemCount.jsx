@@ -3,6 +3,7 @@ import './ItemCount.css'
 import { useState } from "react"
 
 const ItemCount = ({ stock, initial, onAdd, item, }) => {
+
     const [cantidad, setCantidad] = useState(initial)
     const [itemStock, setItemStock] = useState(stock)
     const [itemAdd, setItemAdd] = useState(onAdd)
@@ -32,11 +33,16 @@ const ItemCount = ({ stock, initial, onAdd, item, }) => {
         )
     }
 
+    let disponible = itemStock
+    if (disponible === 0) {
+        disponible = "NO HAY STOCK"
+    };
+
     return (
-        <div className="d-flex flex-column gap-3 card bg-dark mt-5 p-3">
+        <div className="d-flex flex-column gap-3 card bg-dark px-2">
             <h2 className="text-white text-center">{item}</h2>
-            <h5 className="text-white text-center">Disponible: {itemStock}</h5>
-            <div className='text-center align-self-center mt-5 d-flex flex-row gap-2'>
+            <h5 className="text-white text-center">Disponible: {disponible}</h5>
+            <div className='text-center align-self-center mt-2 d-flex flex-row gap-2'>
                 <button type="button" className="btn btn-sm btn-success buttons fs-5" onClick={() => {
                     if (cantidad > 1) {
                         subtractItem(cantidad - 1)
