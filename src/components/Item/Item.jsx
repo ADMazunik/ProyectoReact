@@ -1,14 +1,17 @@
 import React from "react";
 import './Item.css'
+import { Link, } from "react-router-dom";
 
-const Item = ({ title, pictureURL, price }) => {
+const Item = ({ product }) => {
+
+
     return (
         <div className="card d-flex flex-column align-items-center">
-            <img src={pictureURL} className="card-img-top" alt={title} />
+            <img src={product.pictureURL} className="card-img-top" alt={product.title} />
             <div className="card-body">
-                <h5 className="card-title">{title}</h5>
-                <p className="card-text">${price}.-</p>
-                <button href="#" className="btn btn-primary">Ver Detalles</button>
+                <h5 className="card-title">{product.title}</h5>
+                <p className="card-text">${product.price}.-</p>
+                <Link to={"item/" + product.id}><button className="btn btn-primary">Ver Detalles</button></Link>
             </div>
         </div>
     )
