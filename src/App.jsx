@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import Footer from "./components/Footer/Footer";
+import Cart from "./components/Cart/Cart";
 import Loader from "./components/Loader/Loader";
 
 function App() {
@@ -78,6 +79,7 @@ function App() {
           <Route exac path="/category/games/item/:id" element={<ItemDetailContainer productos={productos} />} />
           <Route exac path="/category/consoles/item/:id" element={<ItemDetailContainer productos={productos} />} />
           <Route path="/nosotros" element={<Loader saludo={"Sitio en Construcción..."} />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
         <Footer />
       </BrowserRouter>

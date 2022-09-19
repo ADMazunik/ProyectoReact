@@ -3,7 +3,7 @@ import './Loader.css'
 
 const Loader = ({ saludo }) => {
     return (
-        <div className='d-flex flex-column align-items-center mt-5'>
+        <div className='d-flex flex-column align-items-center mt-5 spinner-container'>
             <div className="spinner-border text-white spinner" role="status">
                 <span className="visually-hidden">Loading...</span>
             </div>

@@ -3,3 +3,6 @@
   height: 12rem;
   border-width: 0.6rem;
 }
+.spinner-container {
+  min-height: 100vh;
+}

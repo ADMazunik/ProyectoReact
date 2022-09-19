@@ -1,18 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import './ItemDetail.css'
 import ItemCount from '../ItemCount/ItemCount'
 
-const ItemDetail = ({ details }) => {
+const ItemDetail = ({ item }) => {
+
+    const [counter, setCounter] = useState(0)
+
+    const onAdd = (counter) => {
+        console.log("onAdd " + counter)
+        setCounter(counter);
+    }
 
     return (
         <div>
             <div className="card d-flex container my-2 p-5">
-                <img src={details.detailImg} className={`card-img-top ${details.category}`} alt={details.title} />
+                <img src={item.detailImg} className={`card-img-top ${item.category}`} alt={item.title} />
                 <div className="card-body d-flex flex-column gap-2">
-                    <h1 className="card-title text-center">{details.title}</h1>
-                    <h3 className="card-text text-center">${details.price}.-</h3>
-                    <p className="card-text">{details.description}</p>
-                    <ItemCount className="card-text" stock={4} initial={1} onAdd={0} />
+                    <h1 className="card-title text-center">{item.title}</h1>
+                    <h3 className="card-text text-center">${item.price}.-</h3>
+                    <p className="card-text">{item.description}</p>
+                    {counter === 0 ? <ItemCount className="card-text" stock={item.stock} initial={1} onAdd={onAdd} /> : <div className='row gap-4 p-3 card bg-added'><h2 className='text-success text-center'>Se agregó el producto al carrito!</h2>
+                        <Link to={"/cart"} className="btn btn-success">Ir al Carrito</Link>
+                    </div>}
                 </div>
             </div>
         </div>

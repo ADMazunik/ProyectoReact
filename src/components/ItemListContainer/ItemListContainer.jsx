@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemList from '../ItemList/ItemList';
+import './ItemListContainer.css'
 import Loader from '../Loader/Loader';
 
 
@@ -35,7 +36,7 @@ const ItemListContainer = ({ productos }) => {
 
   return (
     loading === true ? <Loader saludo={"Obteniendo Datos..."} /> :
-      <div className='container'>
+      <div className='container il-container'>
         <ItemList products={products} />
         <hr />
       </div>

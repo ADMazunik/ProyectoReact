@@ -1,47 +1,39 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import './ItemCount.css'
-import { useState } from "react"
 
 const ItemCount = ({ stock, initial, onAdd, item, }) => {
 
     const [itemStock, setItemStock] = useState(stock)
-    const [cantidad, setCantidad] = useState(initial)
-    const [itemAdd, setItemAdd] = useState(onAdd)
+    const [counter, setCounter] = useState(initial)
+    const [itemAdd, setItemAdd] = useState(0)
 
 
 
     const subtractItem = (valor) => {
-        setCantidad(valor);
+        setCounter(valor);
     }
     const addItem = (valor) => {
-        setCantidad(valor);
+        setCounter(valor);
     }
 
-    const addtoCart = () => {
-        setItemStock(itemStock - cantidad)
-        setItemAdd(itemAdd + cantidad)
-        setCantidad(initial)
+    const addToCart = (counter) => {
+        onAdd(counter)
+        setItemStock(itemStock - counter)
+        setItemAdd(itemAdd + counter)
+        setCounter(itemStock - counter)
     }
-
-    const Message = (props) => {
-        const message = (i) => {
-            if (i > 0) {
-                let msg = `¡Añadiste ${i} productos al carrito!`
-                return msg
-            }
-        }
-        return (
-            <div className="text-white text-center">{message(props.added)}</div>
-        )
-    }
-
 
     if (itemStock === 0) {
         setItemStock("NO HAY STOCK")
     }
+
     const onChange = () => {
-        setCantidad(cantidad)
+        setCounter(counter)
     }
+
+    useEffect(() => {
+        setItemStock(stock)
+    }, [stock])
 
     return (
         <div className="d-flex flex-column gap-3 card bg-dark px-2">
@@ -49,26 +41,25 @@ const ItemCount = ({ stock, initial, onAdd, item, }) => {
             <h5 className="text-white text-center">Disponible: {itemStock}</h5>
             <div className='text-center align-self-center mt-2 d-flex flex-row gap-2'>
                 <button type="button" className="btn btn-sm btn-success buttons fs-5" onClick={() => {
-                    if (cantidad > 1) {
-                        subtractItem(cantidad - 1)
+                    if (counter > 1) {
+                        subtractItem(counter - 1)
                     }
                 }}>-</button>
-                <input type="text" className="form-control text-center buttons" onChange={onChange} value={cantidad} />
+                <input type="text" className="form-control text-center buttons" onChange={onChange} value={counter} />
                 <button type="button" className="btn btn-sm btn-success buttons fs-5" onClick={() => {
-                    if (cantidad < itemStock) {
-                        addItem(cantidad + 1)
+                    if (counter < itemStock) {
+                        addItem(counter + 1)
                     }
 
                 }}>+</button>
             </div>
             <button type="button" className="btn btn-outline-warning" onClick={() => {
-                if (cantidad <= itemStock) {
-                    addtoCart()
+                if (counter <= itemStock) {
+                    addToCart(counter)
                 }
 
             }
             }>Agregar al Carrito</button>
-            <Message added={itemAdd} />
         </div>
     )
 }

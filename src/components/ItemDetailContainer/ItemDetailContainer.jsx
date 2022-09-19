@@ -7,11 +7,10 @@ import Loader from '../Loader/Loader';
 
 const ItemDetailContainer = ({ productos }) => {
 
-    const [loading, setLoading] = useState(true)
-
-    const [details, setDetails] = useState({});
-
     const { id } = useParams()
+    const [item, setItem] = useState({});
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         setLoading(true)
 
@@ -22,7 +21,7 @@ const ItemDetailContainer = ({ productos }) => {
             }, 2000)
         });
         getDetail.then((response) => {
-            setDetails(response);
+            setItem(response);
             setLoading(false)
 
         });
@@ -31,7 +30,7 @@ const ItemDetailContainer = ({ productos }) => {
     return (
         loading === true ? <Loader saludo={"Obteniendo Datos..."} /> :
             <div>
-                <ItemDetail details={details} />
+                <ItemDetail item={item} />
             </div>
     )
 }
