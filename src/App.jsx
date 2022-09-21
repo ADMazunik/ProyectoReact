@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
+import Provider from "./components/Context/Context";
 import NavBar from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
@@ -9,7 +10,6 @@ import Cart from "./components/Cart/Cart";
 import Loader from "./components/Loader/Loader";
 
 function App() {
-  const carrito = [];
   const productos = [
     {
       id: "1",
@@ -69,20 +69,22 @@ function App() {
 
   return (
     <div>
-      <BrowserRouter>
-        <NavBar carro={carrito} />
-        <Routes>
-          <Route exac path="/" element={<ItemListContainer productos={productos} />} />
-          <Route exac path="/home" element={<ItemListContainer productos={productos} />} />
-          <Route exac path="/category/:category" element={<ItemListContainer productos={productos} />} />
-          <Route exac path="/item/:id" element={<ItemDetailContainer productos={productos} />} />
-          <Route exac path="/category/games/item/:id" element={<ItemDetailContainer productos={productos} />} />
-          <Route exac path="/category/consoles/item/:id" element={<ItemDetailContainer productos={productos} />} />
-          <Route path="/nosotros" element={<Loader saludo={"Sitio en Construcción..."} />} />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
+      <Provider>
+        <BrowserRouter>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<ItemListContainer productos={productos} />} />
+            <Route path="/home" element={<ItemListContainer productos={productos} />} />
+            <Route path="/category/:category" element={<ItemListContainer productos={productos} />} />
+            <Route path="/item/:id" element={<ItemDetailContainer productos={productos} />} />
+            <Route path="/category/games/item/:id" element={<ItemDetailContainer productos={productos} />} />
+            <Route path="/category/consoles/item/:id" element={<ItemDetailContainer productos={productos} />} />
+            <Route path="/nosotros" element={<Loader saludo={"Sitio en Construcción..."} />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </Provider>
     </div>
   );
 }

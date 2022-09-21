@@ -1,13 +1,15 @@
 import React from 'react'
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { CartContext } from '../Context/Context'
 import './CartWidget.css'
 
-const CartWidget = (props) => {
-  const { carrito } = props
+const CartWidget = () => {
+  const { cartTotal, } = useContext(CartContext)
   return (
     <Link to={"/cart"}><div className='d-flex flex-row'>
       <img className='carrito' src="/images/carrito.png" alt="" />
-      <p className='numeroCarro'>{carrito.length}</p>
+      <p className='numeroCarro'>{cartTotal()}</p>
     </div></Link>
 
   )

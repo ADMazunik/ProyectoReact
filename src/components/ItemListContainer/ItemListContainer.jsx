@@ -32,7 +32,7 @@ const ItemListContainer = ({ productos }) => {
         setProducts(response.filter(cat => cat.category === category));
       }
     })
-  }, [category,]);
+  }, [category, productos]);
 
   return (
     loading === true ? <Loader saludo={"Obteniendo Datos..."} /> :

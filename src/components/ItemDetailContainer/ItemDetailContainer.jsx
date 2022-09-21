@@ -25,7 +25,7 @@ const ItemDetailContainer = ({ productos }) => {
             setLoading(false)
 
         });
-    }, [id]);
+    }, [productos, id]);
 
     return (
         loading === true ? <Loader saludo={"Obteniendo Datos..."} /> :

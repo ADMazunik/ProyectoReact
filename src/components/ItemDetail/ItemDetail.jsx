@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import './ItemDetail.css'
 import ItemCount from '../ItemCount/ItemCount'
+import { CartContext } from '../Context/Context'
 
 const ItemDetail = ({ item }) => {
 
+    const { addItem } = useContext(CartContext)
     const [counter, setCounter] = useState(0)
 
-    const onAdd = (counter) => {
-        console.log("onAdd " + counter)
-        setCounter(counter);
+    const onAdd = (cnt) => {
+        setCounter(cnt);
+        addItem(item, cnt)
     }
 
     return (
@@ -20,7 +22,7 @@ const ItemDetail = ({ item }) => {
                     <h1 className="card-title text-center">{item.title}</h1>
                     <h3 className="card-text text-center">${item.price}.-</h3>
                     <p className="card-text">{item.description}</p>
-                    {counter === 0 ? <ItemCount className="card-text" stock={item.stock} initial={1} onAdd={onAdd} /> : <div className='row gap-4 p-3 card bg-added'><h2 className='text-success text-center'>Se agregó el producto al carrito!</h2>
+                    {counter === 0 ? <ItemCount className="card-text" stock={item.stock} initial={1} onAdd={onAdd} /> : <div className='row gap-4 p-3 card bg-added'><h2 className='text-warning text-center'>{counter > 1 ? "Se agregaron" : "Se agregó"} <span className='text-light'> <strong>{counter}</strong> {item.title}</span>  al carrito!</h2>
                         <Link to={"/cart"} className="btn btn-success">Ir al Carrito</Link>
                     </div>}
                 </div>
