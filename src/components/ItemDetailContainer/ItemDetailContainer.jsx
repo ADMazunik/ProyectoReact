@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemDetail from '../ItemDetail/ItemDetail';
 import Loader from '../Loader/Loader';
+import { doc, getDoc, getFirestore } from "firebase/firestore"
+
 
 const ItemDetailContainer = ({ productos }) => {
 
@@ -14,18 +16,15 @@ const ItemDetailContainer = ({ productos }) => {
     useEffect(() => {
         setLoading(true)
 
-        const getDetail = new Promise((resolve) => {
-            setTimeout(() => {
-                return resolve(productos.find(prod => prod.id === id)
-                );
-            }, 200)
+        const db = getFirestore()
+        const response = doc(db, "productos", id);
+        getDoc(response).then((snapShot) => {
+            if (snapShot.exists()) {
+                setItem({ id: snapShot.id, ...snapShot.data() })
+                setLoading(false)
+            };
         });
-        getDetail.then((response) => {
-            setItem(response);
-            setLoading(false)
-
-        });
-    }, [productos, id]);
+    }, [id]);
 
     return (
         loading === true ? <Loader saludo={"Obteniendo Datos..."} /> :

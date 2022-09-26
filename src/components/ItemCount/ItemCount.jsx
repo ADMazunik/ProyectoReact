@@ -20,7 +20,7 @@ const ItemCount = ({ stock, initial, onAdd, item, }) => {
         onAdd(counter)
         setItemStock(itemStock - counter)
         setItemAdd(itemAdd + counter)
-        setCounter(itemStock - counter)
+        setCounter(initial)
     }
 
     if (itemStock === 0) {

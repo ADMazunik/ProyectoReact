@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import ItemList from '../ItemList/ItemList';
 import './ItemListContainer.css'
 import Loader from '../Loader/Loader';
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
 
 
 const ItemListContainer = ({ productos }) => {
@@ -15,23 +16,16 @@ const ItemListContainer = ({ productos }) => {
 
 
   useEffect(() => {
+    const db = getFirestore()
+    const itemCollection = collection(db, "productos");
+    const categoryPage = category ? query(itemCollection, where("category", "==", category)) : itemCollection
 
-    const getProducts = new Promise((resolve) => {
-      setLoading(true)
-      setTimeout(() => {
-        resolve(productos)
-        return resolve(productos);
-      }, 200)
-    });
-    getProducts.then((response) => {
+
+    getDocs(categoryPage).then((snapShot) => {
+      setProducts(snapShot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
       setLoading(false)
+    });
 
-      if (!category) {
-        setProducts(response)
-      } else {
-        setProducts(response.filter(cat => cat.category === category));
-      }
-    })
   }, [category, productos]);
 
   return (
