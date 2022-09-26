@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import './NavBar.css';
 import CartWidget from "../CartWidget/CartWidget";
 
-const NavBar = (carrito) => {
+const NavBar = () => {
     return (
         <header className="bgHeader container-fluid">
             <nav className="container text-light d-flex flex-row justify-content-between gap-5 align-items-center">

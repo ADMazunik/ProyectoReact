@@ -26,7 +26,7 @@ function App() {
       id: "2",
       category: "games",
       title: "Destiny 2",
-      price: "GRATIS",
+      price: 0,
       stock: 1,
       pictureURL: "/images/destiny2.jpg",
       detailImg: "/images/destiny2Detail.jpg",

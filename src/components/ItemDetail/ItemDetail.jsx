@@ -22,9 +22,11 @@ const ItemDetail = ({ item }) => {
                     <h1 className="card-title text-center">{item.title}</h1>
                     <h3 className="card-text text-center">${item.price}.-</h3>
                     <p className="card-text">{item.description}</p>
-                    {counter === 0 ? <ItemCount className="card-text" stock={item.stock} initial={1} onAdd={onAdd} /> : <div className='row gap-4 p-3 card bg-added'><h2 className='text-warning text-center'>{counter > 1 ? "Se agregaron" : "Se agregó"} <span className='text-light'> <strong>{counter}</strong> {item.title}</span>  al carrito!</h2>
-                        <Link to={"/cart"} className="btn btn-success">Ir al Carrito</Link>
-                    </div>}
+                    <ItemCount className="card-text" stock={item.stock} initial={1} onAdd={onAdd} />
+                    {counter === 0 ? null :
+                        <div className='mt-3 gap-4 p-3 card bg-added'><h2 className='text-warning text-center'>{counter > 1 ? "Se agregaron" : "Se agregó"} <span className='text-light'> <strong>{counter}</strong> {item.title}</span>  a tu carrito!</h2>
+                            <Link to={"/cart"} className="btn btn-success align-self-center w-25">Ir al Carrito</Link>
+                        </div>}
                 </div>
             </div>
         </div>

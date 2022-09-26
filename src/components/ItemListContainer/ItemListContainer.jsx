@@ -21,7 +21,7 @@ const ItemListContainer = ({ productos }) => {
       setTimeout(() => {
         resolve(productos)
         return resolve(productos);
-      }, 2000)
+      }, 200)
     });
     getProducts.then((response) => {
       setLoading(false)
