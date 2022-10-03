@@ -7,29 +7,29 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import Footer from "./components/Footer/Footer";
 import Cart from "./components/Cart/Cart";
+import Checkout from "./components/Checkout/Checkout";
 import Loader from "./components/Loader/Loader";
 
 function App() {
 
   return (
-    <div>
-      <Provider>
-        <BrowserRouter>
-          <NavBar />
-          <Routes>
-            <Route path="/" element={<ItemListContainer />} />
-            <Route path="/home" element={<ItemListContainer />} />
-            <Route path="/category/:category" element={<ItemListContainer />} />
-            <Route path="/item/:id" element={<ItemDetailContainer />} />
-            <Route path="/category/games/item/:id" element={<ItemDetailContainer />} />
-            <Route path="/category/consoles/item/:id" element={<ItemDetailContainer />} />
-            <Route path="/nosotros" element={<Loader saludo={"Sitio en Construcción..."} />} />
-            <Route path="/cart" element={<Cart />} />
-          </Routes>
-          <Footer />
-        </BrowserRouter>
-      </Provider>
-    </div>
+    <Provider>
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<ItemListContainer />} />
+          <Route path="/home" element={<ItemListContainer />} />
+          <Route path="/category/:category" element={<ItemListContainer />} />
+          <Route path="/item/:id" element={<ItemDetailContainer />} />
+          <Route path="/category/games/item/:id" element={<ItemDetailContainer />} />
+          <Route path="/category/consoles/item/:id" element={<ItemDetailContainer />} />
+          <Route path="/nosotros" element={<Loader saludo={"Sitio en Construcción..."} />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </Provider>
   );
 }
 

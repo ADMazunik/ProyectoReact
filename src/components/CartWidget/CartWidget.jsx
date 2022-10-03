@@ -7,12 +7,11 @@ import './CartWidget.css'
 const CartWidget = () => {
   const { cartTotal, cart } = useContext(CartContext)
   return (
-    cart.length > 0 ?
-      <Link to={"/cart"}><div className='d-flex flex-row'>
-        <img className='carrito' src="/images/carrito.png" alt="carrito" />
-        <p className='numeroCarro'>{cartTotal()}</p>
-      </div></Link> :
-      null
+
+    <Link to={"/cart"}><div className='d-flex flex-row'>
+      <img className='carrito' src="/images/carrito.png" alt="carrito" />
+      {cart.length > 0 && <p className='numeroCarro'>{cartTotal()}</p>}
+    </div></Link>
 
   )
 }
