@@ -5,10 +5,10 @@ import { useParams } from 'react-router-dom';
 import ItemList from '../ItemList/ItemList';
 import './ItemListContainer.css'
 import Loader from '../Loader/Loader';
-import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
+import { collection, getDocs, getFirestore, orderBy, query, where } from 'firebase/firestore';
 
 
-const ItemListContainer = ({ productos }) => {
+const ItemListContainer = () => {
 
   const [loading, setLoading] = useState(true)
   const [products, setProducts] = useState([]);
@@ -18,7 +18,7 @@ const ItemListContainer = ({ productos }) => {
   useEffect(() => {
     const db = getFirestore()
     const itemCollection = collection(db, "productos");
-    const categoryPage = category ? query(itemCollection, where("category", "==", category)) : itemCollection
+    const categoryPage = category ? query(itemCollection, where("category", "==", category)) : query(itemCollection, orderBy("category", "desc"))
 
 
     getDocs(categoryPage).then((snapShot) => {
@@ -26,7 +26,7 @@ const ItemListContainer = ({ productos }) => {
       setLoading(false)
     });
 
-  }, [category, productos]);
+  }, [category]);
 
   return (
     loading === true ? <Loader saludo={"Obteniendo Datos..."} /> :

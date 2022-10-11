@@ -5,7 +5,7 @@ import CartWidget from "../CartWidget/CartWidget";
 
 const NavBar = () => {
     return (
-        <header className="bgHeader container-fluid">
+        <header className="bg-header container-fluid">
             <nav className="container text-light d-flex flex-row justify-content-between gap-5 align-items-center">
                 <ul className="d-flex flex-row align-items-center gap-3">
                     <Link to="/"><img src="/images/logo.png" alt="Logo empresa" /></Link>

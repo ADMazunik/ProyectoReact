@@ -21,8 +21,6 @@ function App() {
           <Route path="/home" element={<ItemListContainer />} />
           <Route path="/category/:category" element={<ItemListContainer />} />
           <Route path="/item/:id" element={<ItemDetailContainer />} />
-          <Route path="/category/games/item/:id" element={<ItemDetailContainer />} />
-          <Route path="/category/consoles/item/:id" element={<ItemDetailContainer />} />
           <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />

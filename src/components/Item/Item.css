@@ -3,6 +3,12 @@
   background-color: #0a141d;
   color: #ffffff;
 }
+.il-card:hover {
+  transition: transform 0.5s;
+  transform: scale(115%);
+  box-shadow: -4px 3px rgba(0, 0, 0, 0.322);
+  z-index: 50;
+}
 
 .btn-primary {
   background-color: rgb(109, 181, 236);

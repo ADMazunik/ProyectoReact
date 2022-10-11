@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemDetail from '../ItemDetail/ItemDetail';
 import Loader from '../Loader/Loader';
+import ErrorProductos from '../ErrorProductos/ErrorProductos';
 import { doc, getDoc, getFirestore } from "firebase/firestore"
 
 
@@ -21,16 +22,15 @@ const ItemDetailContainer = () => {
         getDoc(response).then((snapShot) => {
             if (snapShot.exists()) {
                 setItem({ id: snapShot.id, ...snapShot.data() })
-                setLoading(false)
             };
-        });
+            setLoading(false)
+        })
     }, [id]);
 
     return (
         loading === true ? <Loader saludo={"Obteniendo Datos..."} /> :
             <div>
-                <ItemDetail item={item} />
-            </div>
+                {item.category ? <ItemDetail item={item} /> : <ErrorProductos />} </div>
     )
 }
 

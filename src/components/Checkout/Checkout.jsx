@@ -3,6 +3,7 @@ import { CartContext } from "../Context/Context";
 import { getFirestore, collection, addDoc, serverTimestamp } from "firebase/firestore";
 import './Checkout.css'
 import Success from "../Success/Success";
+import ErrorProductos from "../ErrorProductos/ErrorProductos";
 
 const Checkout = () => {
     const { cart, clear, cartTotal, totalPrice } = useContext(CartContext);
@@ -70,7 +71,7 @@ const Checkout = () => {
                         </table>
                     </div>
                 </div>
-                : orderId !== "" ? <Success id={orderId} /> : <div className="alert alert-danger text-center fw-bold fs-2">Lo siento, no se encontraron productos.</div>
+                : orderId !== "" ? <Success id={orderId} /> : <ErrorProductos />
             }
         </div>
     )
