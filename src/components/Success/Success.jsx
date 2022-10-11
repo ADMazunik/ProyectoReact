@@ -2,7 +2,7 @@ import React from "react";
 
 const Success = ({ id }) => {
     return (
-        <div className="container">
+        <div className="container il-container">
             <div className="text-center p-4 text-white bg-vapor">
                 <h1 className="fs-1 fw-bold my-3">Felicitaciones!</h1>
                 <p className="fs-2 ">La Orden de Compra se generó correctamente con el ID:</p>

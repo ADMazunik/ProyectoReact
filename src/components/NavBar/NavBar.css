@@ -3,13 +3,18 @@ ul a {
 }
 ul a li {
   text-transform: uppercase;
-  color: #b8b6b4;
+  color: #c5c3c0;
   list-style: none;
 }
 ul a li:hover {
-  color: white;
+  color: #93a8d6;
 }
 
 .bgHeader {
   background-color: #171a21;
+}
+
+.active {
+  font-size: 2rem;
+  transition: all 0.3s;
 }

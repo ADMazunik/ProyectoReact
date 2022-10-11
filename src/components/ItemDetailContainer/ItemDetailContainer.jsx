@@ -7,7 +7,7 @@ import Loader from '../Loader/Loader';
 import { doc, getDoc, getFirestore } from "firebase/firestore"
 
 
-const ItemDetailContainer = ({ productos }) => {
+const ItemDetailContainer = () => {
 
     const { id } = useParams()
     const [item, setItem] = useState({});

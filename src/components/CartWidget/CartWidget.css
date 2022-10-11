@@ -2,6 +2,11 @@
   width: 35px;
   height: 35px;
 }
+.carrito:hover {
+  width: 45px;
+  height: 45px;
+  transition: all 0.1s;
+}
 
 .numeroCarro {
   margin-left: -10px;
