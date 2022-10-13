@@ -14,10 +14,6 @@ const ItemDetail = ({ item }) => {
         addItem(item, cnt)
     }
 
-    const toTop = () => {
-        window.scrollTo({ top: 1, behavior: "smooth", })
-    }
-
     return (
         <div>
             <div className="card d-flex container my-2 p-5">
@@ -29,7 +25,7 @@ const ItemDetail = ({ item }) => {
                     <ItemCount className="card-text" stock={item.stock} initial={1} onAdd={onAdd} />
                     {counter !== 0 &&
                         <div className='mt-3 gap-4 p-3 card bg-added'><h2 className='text-warning text-center'>{counter > 1 ? "Se agregaron" : "Se agregó"} <span className='text-light'> <strong>{counter}</strong> {item.title}</span> a tu carrito!</h2>
-                            <Link to={"/cart"} onClick={toTop} className="btn btn-success align-self-center">Ir al Carrito</Link>
+                            <Link to={"/cart"} className="btn btn-success align-self-center">Ir al Carrito</Link>
                         </div>}
                 </div>
             </div>

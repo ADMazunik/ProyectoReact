@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { CartContext } from '../Context/Context'
 import CartItem from './CartItem';
@@ -7,6 +7,10 @@ import './Cart.css'
 const Cart = () => {
 
     const { cart, clear, totalPrice } = useContext(CartContext);
+
+    useEffect(() => {
+        window.scrollTo({ left: 0, top: 1, behavior: "smooth", })
+    }, [])
 
     return (
         cart.length > 0 ?

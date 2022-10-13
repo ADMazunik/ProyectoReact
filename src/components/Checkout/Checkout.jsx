@@ -34,7 +34,7 @@ const Checkout = () => {
     }
 
     useEffect(() => {
-        window.scrollTo({ top: 1, behavior: "smooth", })
+        window.scrollTo({ left: 0, top: 1, behavior: "smooth", })
     }, [])
 
 

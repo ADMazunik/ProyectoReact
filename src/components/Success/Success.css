@@ -1,0 +1,9 @@
+.success-box {
+  border-radius: 20px;
+  box-shadow: -5px 4px 5px rgba(0, 0, 0, 0.445);
+  text-shadow: -4px 3px 6px #1b2838;
+}
+.success-text {
+  font-size: 5rem;
+  text-transform: uppercase;
+}
