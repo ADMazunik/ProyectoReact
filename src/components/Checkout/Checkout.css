@@ -4,3 +4,9 @@
 .checkout-bg {
   background-color: #203e57;
 }
+.btn-invalid {
+  opacity: 60%;
+}
+.btn-invalid:hover {
+  cursor: not-allowed;
+}

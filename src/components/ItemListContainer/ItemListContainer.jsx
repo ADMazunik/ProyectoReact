@@ -18,7 +18,7 @@ const ItemListContainer = () => {
   useEffect(() => {
     const db = getFirestore()
     const itemCollection = collection(db, "productos");
-    const categoryPage = category ? query(itemCollection, where("category", "==", category)) : query(itemCollection, orderBy("category", "desc"))
+    const categoryPage = category ? query(itemCollection, where("category", "==", category), orderBy("price")) : query(itemCollection, orderBy("price"), orderBy("category", "desc"))
 
 
     getDocs(categoryPage).then((snapShot) => {

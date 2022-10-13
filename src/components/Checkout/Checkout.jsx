@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { CartContext } from "../Context/Context";
 import { getFirestore, collection, addDoc, serverTimestamp } from "firebase/firestore";
 import './Checkout.css'
@@ -33,6 +33,11 @@ const Checkout = () => {
         }
     }
 
+    useEffect(() => {
+        window.scrollTo({ top: 1, behavior: "smooth", })
+    }, [])
+
+
     return (
         <div className="container py-5 checkout">
             {cartTotal() > 0 ?
@@ -40,17 +45,17 @@ const Checkout = () => {
                     <div className="col-md-4 offset-md-2">
                         <div className="mb-3">
                             <label htmlFor="title" className="form-label text-light">Nombre</label>
-                            <input type="text" className="form-control" id="title" onInput={(e) => setNombre(e.target.value)} />
+                            <input type="text" className="form-control" id="title" onChange={(e) => setNombre(e.target.value)} />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="email" className="form-label text-light">Email</label>
-                            <input type="text" className="form-control" id="email" onInput={(e) => setEmail(e.target.value)} />
+                            <input type="text" className="form-control" id="email" onChange={(e) => setEmail(e.target.value)} />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="telefono" className="form-label text-light">Teléfono</label>
-                            <input type="text" className="form-control" id="telefono" onInput={(e) => setTelefono(e.target.value)} />
+                            <input type="text" className="form-control" id="telefono" onChange={(e) => setTelefono(e.target.value)} />
                         </div>
-                        <button type="button" className="btn btn-success" onClick={() => { sendOrder() }}>Finalizar Orden</button>
+                        {nombre && email && telefono ? <button type="button" className="btn btn-success" onClick={() => { sendOrder() }}>Finalizar Orden</button> : <button type="button" className="btn btn-danger btn-invalid" onClick={() => { sendOrder() }}>Complete todos los campos</button>}
                     </div>
                     <div className="col-md-4">
                         <h5 className="text-center text-light"> Productos</h5>
