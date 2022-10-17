@@ -3,7 +3,7 @@
 ## **Proyecto E-Commerce realizado con ReactJS**
 
 ## ¡Bienvendidos! Mi nombre es [Alan](https://github.com/ADMazunik) y este es mi primer proyecto hecho con la librería ReactJS
-<img src="https://im3.ezgif.com/tmp/ezgif-3-6076860abc.gif">
+<img src="https://s1.gifyu.com/images/ezgif.com-gif-maker8d36cfded7e3d9c0.gif">
 
 
 Mi propuesta fue crear una SPA de venta de juegos tomando como referencia la tienda de Steam.
